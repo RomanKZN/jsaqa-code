@@ -1,5 +1,5 @@
-Feature: Search a course
-    Scenario: Should search by text
-        Given user is on "/navigation" page
-        When user search by "тестировщик"
-        Then user sees the course suggested "Тестировщик ПО"
+Feature: Ticket booking
+    Scenario: Must book ticket
+        Given user is on "/index.phpta" page
+        When the user will be redirected to the seat selection page ""
+        Then user sees the title of the movie "Логан"

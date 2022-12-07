@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "instal": "^0.0.1-security",
+    "jest-puppeteer": "^6.1.1",
+    "test": "^3.2.1"
+  },
+  "devDependencies": {
+    "pptr-testing-library": "^0.7.0"
+  }
+}
