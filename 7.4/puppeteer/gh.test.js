@@ -10,8 +10,12 @@ afterEach(() => {
 
 //first test
 describe("Github page tests", () => {
-  test("The h1 header content'", async () => {
+  beforeEach(async () => {
+    page = await browser.newPage();
     await page.goto("https://github.com/team");
+  });
+
+  test("The h1 header content'", async () => {
     const firstLink = await page.$("header div div a");
     await firstLink.click();
     await page.waitForSelector("h1");
@@ -20,13 +24,11 @@ describe("Github page tests", () => {
   }, 50000);
 
   test("The first link attribute", async () => {
-    await page.goto("https://github.com/team");
     const actual = await page.$eval("a", (link) => link.getAttribute("href"));
     expect(actual).toEqual("#start-of-content");
   }, 50000);
 
   test("The page contains Sign in button", async () => {
-    await page.goto("https://github.com/team");
     const btnSelector = ".btn-large-mktg.btn-mktg";
     await page.waitForSelector(btnSelector, {
       visible: true,
@@ -39,8 +41,11 @@ describe("Github page tests", () => {
 
 //second test
 describe("The h1 header content", () => {
-  test("button jump", async () => {
+  beforeEach(async () => {
+    page = await browser.newPage();
     await page.goto("https://github.blog");
+  });
+  test("button jump", async () => {
     const title2 = await page.title();
     expect(title2).toEqual(
       "The GitHub Blog | Updates, ideas, and inspiration from GitHub to help developers build and design software."
@@ -48,13 +53,11 @@ describe("The h1 header content", () => {
   }, 45000);
 
   test("The first link attribute", async () => {
-    await page.goto("https://github.blog");
     const actual = await page.$eval("a", (link) => link.getAttribute("href"));
     expect(actual).toEqual("https://github.com");
   }, 50000);
 
   test("The page contains Sign in button", async () => {
-    await page.goto("https://github.blog");
     const btnSelector =
       "body > header > div > nav > div > a.btn-mktg.font-weight-semibold.ml-5.js-header-cta.header-cta";
     await page.waitForSelector(btnSelector, {});
