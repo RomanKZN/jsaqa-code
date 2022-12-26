@@ -11,7 +11,6 @@ afterEach(() => {
 //first test
 describe("Github page tests", () => {
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/team");
   });
 
@@ -42,7 +41,6 @@ describe("Github page tests", () => {
 //second test
 describe("The h1 header content", () => {
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.blog");
   });
   test("button jump", async () => {
